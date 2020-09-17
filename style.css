@@ -1,0 +1,264 @@
+@charset "UTF-8";
+:root {
+  scroll-behavior: smooth; }
+
+/**
+*   @fileoverview
+*     Componente para aplicar un reseteo de estilos básicos al documento, aplica las siguientes reglas:
+*       * box-sizing: border-box; al documento HTML y todos sus elementos
+*       * padding y margin de todos los elementos a cero
+*       * Evita barras de desplazamiento horizontal al body del documento, múy útil para el Responsive Design
+*       * Asigna la fuente tipográfica y el tamaño base de fuente para el documento HTML
+*     Dependencias: Ninguna
+*
+*   @param {String} $font, nombre de la fuente base del proyecto
+*   @param {String} $font-size, tamaño de la fuente del elemento raíz (html)
+*
+*   @returns {void} no retorna nada
+*
+*   @author Jonathan MirCha <jonmircha@gmail.com>
+*   @version 1.0.0
+*/
+/* cyrillic */
+@font-face {
+  font-family: 'joseFinSanf';
+  src: url("./tipografia/JosefinSans-SemiBold.ttf"); }
+
+@font-face {
+  font-family: 'joseFinSanf-bold';
+  src: url("./tipografia/JosefinSans-Bold.ttf"); }
+
+html {
+  box-sizing: border-box;
+  font-family: "joseFinSanf";
+  font-size: 16px; }
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0; }
+
+a {
+  text-decoration: none; }
+
+body {
+  overflow-x: hidden;
+  color: #fee58e; }
+
+.menu {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.158);
+  top: 0;
+  left: 0;
+  z-index: 99;
+  transition: background .4s; }
+  .menu.activeBcgColor {
+    background-color: rgba(0, 0, 0, 0.8); }
+  .menu-contentLogo {
+    height: 100%;
+    width: 10%;
+    display: flex;
+    align-items: center; }
+  .menu-logoLink {
+    width: 50px; }
+  .menu-logo {
+    width: 100%; }
+  .menu-navegacion {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; }
+  .menu-ContentItem {
+    width: 100%;
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-end; }
+  .menu-item {
+    margin-left: 16px; }
+  .menu-link {
+    color: #fee58e;
+    font-size: 20px; }
+
+.objetivos {
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 90px;
+  padding-bottom: 90px;
+  padding-left: 0;
+  padding-right: 0;
+  background-image: url("../src/img/Grupo 30.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat; }
+  .objetivos-content {
+    width: 90%;
+    margin: 0 auto;
+    height: fit-content; }
+  .objetivos-contentTitle {
+    border-bottom: 1px solid #fee58e;
+    padding: 16px  0 0 0;
+    height: 12%;
+    display: flex;
+    justify-content: center; }
+  .objetivos-title {
+    font-family: "joseFinSanf-bold";
+    width: fit-content;
+    font-size: 3em;
+    color: #fee58e;
+    padding: 20px 25px;
+    position: relative; }
+  .objetivos-resaltadorEstrella {
+    position: absolute;
+    width: 15px;
+    top: 37%; }
+    .objetivos-resaltadorEstrella.estrellaIzquierda {
+      left: 0; }
+    .objetivos-resaltadorEstrella.estrellaDerecha {
+      right: 0; }
+  .objetivos-grid {
+    width: 75%;
+    margin: 0 auto;
+    height: fit-content;
+    display: grid;
+    padding: 50px 0 0 0;
+    grid-gap: 16px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 230px); }
+    @media screen and (max-width: 764px) {
+      .objetivos-grid {
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(6, 230px); } }
+  .objetivos-contentObjetivo {
+    border: 1px solid #fee58e;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px 25px;
+    background-color: #000;
+    max-width: 310px;
+    justify-self: center; }
+  .objetivos-svg {
+    height: 30%; }
+  .objetivos-description {
+    color: #fee58e; }
+
+.objetivos-contentObjetivo {
+  opacity: 0;
+  transform: translateY(20%);
+  animation-duration: .8s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards; }
+  .objetivos-contentObjetivo.animationtranslatexOpaciti {
+    animation-name: translatexOpaciti; }
+
+@keyframes translatexOpaciti {
+  100% {
+    opacity: 1;
+    transform: translateY(0); } }
+
+.footer {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  background-image: url("./img/img-footer.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat; }
+  .footer-menu {
+    width: 100%;
+    height: 100px;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .footer-nav, .footer-contentLogo, .footer-contact {
+    height: 100%; }
+  .footer-nav, .footer-contentLogo {
+    width: 35%; }
+  .footer-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center; }
+  .footer-contentItem {
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none; }
+  .footer-item {
+    margin-right: 16px; }
+  .footer-link {
+    font-size: 20px;
+    color: #fee58e; }
+  .footer-contentLogo {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center; }
+  .footer-linkLogo {
+    width: 50px; }
+  .footer-logo {
+    width: 100%; }
+  .footer-contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20%; }
+  .footer-socialMedia {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    transition: background .4s; }
+    .footer-socialMedia:last-of-type {
+      margin: 0; }
+    .footer-socialMedia:hover {
+      background-color: rgba(255, 255, 255, 0.157); }
+  .footer-svgContact {
+    height: 40%; }
+
+body {
+  background-color: #000; }
+
+.home-page {
+  width: 100%; }
+
+.header {
+  width: 100%;
+  height: 87vh;
+  position: relative; }
+  .header-poster {
+    width: 100%;
+    height: 100%;
+    background-image: url("./img/header-poster.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; }
+  .header-contentLogo {
+    border: 1px solid #fee58e;
+    position: absolute;
+    bottom: 0;
+    left: calc(50% - 180px / 2);
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(50%);
+    background-color: #000; }
+  .header-logo {
+    width: 50%; }
