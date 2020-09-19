@@ -29,17 +29,34 @@ var touchMenu = exports.touchMenu = function touchMenu(abrir, cerrar, navegacion
   var navegacionTouch = document.querySelector(navegacion);
   var menuDespliegueItem = document.querySelector(menuDespliegue);
   var linkMenu = document.querySelectorAll(link);
-  console.log(Array.from(linkMenu)[0]);
+
   navegacionTouch.addEventListener("click", function (e) {
-    if (e.target == botonAbrir || e.target == Array.from(botonAbrir.children)[0] || e.target == Array.from(botonAbrir.children)[1] || e.target == Array.from(botonAbrir.children)[2]) {
-      if (e.target == botonAbrir.children) {
-        // botonAbrir.children.Array.from
-        console.log("dsdasdsads");
+    // linkMenu.forEach(link => {
+    closedMenuArreglo(linkMenu);
+    closedMenuArreglo(Array.from(botonCerrar.children));
+    openMenuAreglo(Array.from(botonAbrir.children));
+    closedMenu(botonCerrar);
+    openMenu(botonAbrir);
+
+    function closedMenuArreglo(link) {
+      link.forEach(function (el) {
+        closedMenu(el);
+      });
+    }
+    function openMenuAreglo(link) {
+      link.forEach(function (el) {
+        openMenu(el);
+      });
+    }
+    function closedMenu(link) {
+      if (e.target == link) {
+        menuDespliegueItem.classList.remove("activeMenu");
       }
-      menuDespliegueItem.classList.add("activeMenu");
-    } else if (e.target == botonCerrar || e.target == Array.from(botonCerrar.children)[0] || e.target == Array.from(botonCerrar.children)[1] || e.target == Array.from(linkMenu)[0] || e.target == Array.from(linkMenu)[1]) {
-      menuDespliegueItem.classList.remove("activeMenu");
-      console.log("cerrar");
+    }
+    function openMenu(link) {
+      if (e.target == link) {
+        menuDespliegueItem.classList.add("activeMenu");
+      }
     }
   });
 };
